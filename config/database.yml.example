@@ -5,10 +5,10 @@
 #   gem 'sqlite3'
 development:
   adapter: postgresql
-  database: swmap_prod
-  username: swmap_prod
-  password: m3p3kn0w
-  host: yin.gina.alaska.edu
+  database:
+  username:
+  password:
+  host: 
   pool: 5
   timeout: 5000
 
