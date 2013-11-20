@@ -1,0 +1,22 @@
+.container 
+  .title
+    = image_tag "sdmi-banner.png", :title => "SDMI", style: "width: 100%;"
+  .navbar.navbar-default.navbar-static-top
+    .navbar-header
+      %button.navbar-toggle{ type: "button", data: { toggle: "collapse", target:"#navbar-collapse-1" } }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      %a.navbar-brand{ href:"/" } browse.alaskamapped.org
+    #navbar-collapse-1.navbar-collapse.collapse
+      %ul.nav.navbar-nav.pull-right
+        %li
+          = link_to 'https://uafgina.zendesk.com/anonymous_requests/new' do
+            Contact Support
+        %li
+          = link_to '/attribution' do
+            Attributions
+        / %li
+        /   = link_to '/login' do
+        /     Login
