@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require leaflet/leaflet
+//= require wicket/wicket
+//= require wicket/wicket-leaflet
 //= require bootstrap/dist/js/bootstrap
+//= require_tree ./map

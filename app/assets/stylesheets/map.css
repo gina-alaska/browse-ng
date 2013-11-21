@@ -10,6 +10,10 @@
  *
  *= require_self
  *= require bootstrap/dist/css/bootstrap
+ *= require leaflet/leaflet
+ *= require_tree .
  */
 
-
+#map {
+  height: 400px;
+}

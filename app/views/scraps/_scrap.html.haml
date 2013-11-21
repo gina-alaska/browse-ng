@@ -2,7 +2,7 @@
   .row
     .col-lg-6.col-md-6
       %dt Scene ID:
-      %dd= scrap.scene_gid
+      %dd= link_to_unless current_page?(scrap), scrap.scene_gid, scrap
       %dt License:
       %dd
         %abbr{ title: scrap.license.try(:synonym_label).try(:humanize) }

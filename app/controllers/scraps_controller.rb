@@ -12,5 +12,11 @@ class ScrapsController < ApplicationController
     @licenses = License.order('synonym ASC')
     
     respond_with(@scraps)
-  end  
+  end
+  
+  def show
+    @scrap = Scrap.find(params[:id])
+    
+    render :layout => 'map'
+  end
 end

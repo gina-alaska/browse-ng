@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BrowseAlaskamappedOrg</title>
+  <%= stylesheet_link_tag    "map", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "map", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'layouts/analytics' %>
+  <section id="header">
+    <%= render 'layouts/header' %>
+  </section>
+  <section id="content" class="container">
+    <%= yield %>
+  </section>
+</body>
+</html>

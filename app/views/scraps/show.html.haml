@@ -1,0 +1,10 @@
+#map
+= render @scrap
+
+:javascript
+  $(document).ready(function() {
+    var map = new BasicMap('map', function() {
+      this.fromWKT('#{@scrap.footprint.wkt}')
+    });
+  })
+  
