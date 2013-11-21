@@ -7,7 +7,7 @@ set :deploy_to, '/www/browse_ng'
 set :scm, :git
 
 set :format, :pretty
-set :log_level, :debug
+set :log_level, :info
 # set :pty, true
 
 set :linked_files, %w{config/database.yml config/initializers/secret_token.rb}
