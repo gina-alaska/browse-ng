@@ -1,0 +1,14 @@
+%dl.dl-horizontal
+  .row
+    .col-lg-6.col-md-6
+      %dt Scene ID:
+      %dd= scrap.scene_gid
+      %dt License:
+      %dd
+        %abbr{ title: scrap.license.try(:synonym_label).try(:humanize) }
+          = scrap.license.try(:synonym)
+    .col-lg-6.col-md-6  
+      %dt Public:
+      %dd= scrap.license.try(:downloadable) ? 'Yes' : 'No'    
+      %dt Last updated:
+      %dd= scrap.updated_at

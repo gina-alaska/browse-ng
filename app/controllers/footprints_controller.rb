@@ -1,0 +1,2 @@
+class FootprintsController < ApplicationController
+end
