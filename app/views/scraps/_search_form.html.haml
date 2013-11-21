@@ -6,7 +6,7 @@
       .form-group
         = text_field_tag :scene_gid, params[:scene_gid], class: 'form-control', style: 'width: 300px;', placeholder: 'Scene id (ex: SPOT5.SDMI)'
       .form-group
-        = select_tag :license_id, options_from_collection_for_select(@licenses, :id, :synonym, params[:license_id]), class: 'form-control', prompt: 'Select a license'
+        = select_tag :license_id, options_from_collection_for_select(@licenses, :id, :label, params[:license_id]), class: 'form-control', prompt: 'Select a license'
       .checkbox
         %label
           = check_box_tag :public, 'yes', params[:public]
