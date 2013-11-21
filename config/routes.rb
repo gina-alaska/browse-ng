@@ -1,9 +1,7 @@
 BrowseAlaskamappedOrg::Application.routes.draw do
   resources :footprints
 
-  resources :scraps do
-    get 'search', on: :collection
-  end
+  resources :scraps
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -13,6 +11,7 @@ BrowseAlaskamappedOrg::Application.routes.draw do
 
   get 'attribution' => 'welcome#attribution'
   get 'questions' => 'welcome#questions'
+  get 'search' => 'scraps#index'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

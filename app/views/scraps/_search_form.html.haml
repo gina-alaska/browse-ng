@@ -2,7 +2,7 @@
   .panel-heading
     Search for a scene
   .panel-body
-    = form_tag '/scraps', method: 'GET', role: 'form', class: 'form-inline' do
+    = form_tag '/search', method: 'GET', role: 'form', class: 'form-inline' do
       .form-group
         = text_field_tag :scene_gid, params[:scene_gid], class: 'form-control', style: 'width: 300px;', placeholder: 'Scene id (ex: SPOT5.SDMI)'
       .form-group
