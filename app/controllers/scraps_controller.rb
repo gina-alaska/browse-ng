@@ -6,7 +6,7 @@ class ScrapsController < ApplicationController
     @scraps = @scraps.includes(:footprint, :license)
     params[:scene_gid].split(' ').each do |word|
       @scraps = @scraps.where('footprints.scene_gid ilike ?', "%#{word}%")
-    end
+    end if params[:scene_gid].present?
     @scraps = @scraps.where('licenses.downloadable = ?', true) if params[:public]
     @scraps = @scraps.where('licenses.id = ?', params[:license_id]) if params[:license_id].present?
     @scraps = @scraps.paginate(page: params[:page])
