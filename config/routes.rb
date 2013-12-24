@@ -7,6 +7,7 @@ BrowseAlaskamappedOrg::Application.routes.draw do
   
   namespace :admin do
     resources :posts
+    resources :memberships
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -18,6 +19,13 @@ BrowseAlaskamappedOrg::Application.routes.draw do
   get 'attribution' => 'welcome#attribution'
   get 'questions' => 'welcome#questions'
   get 'search' => 'scraps#index'
+  
+  get 'login', to: redirect('/auth/google')
+  get 'logout', to: 'sessions#destroy'
+  
+  get '/auth/failure', to: 'sessions#failure'
+  get '/auth/:provider/callback', to: 'sessions#create'
+  post '/auth/:provider/callback', to: 'sessions#create'  
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

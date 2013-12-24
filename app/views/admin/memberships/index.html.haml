@@ -1,0 +1,19 @@
+= link_to 'New Membership', new_admin_membership_path, class: 'btn btn-success pull-right'
+%h3 Listing memberships
+%table.table
+  %thead
+    %tr
+      %th User
+      %th Email
+      %td Associated?
+      %th
+  %tbody
+    - @memberships.each do |membership|
+      %tr
+        %td= membership.user
+        %td= membership.email
+        %td= membership.user.nil? ? 'No' : 'Yes'
+        %td.text-right
+          .btn-group
+            = link_to 'Edit', edit_admin_membership_path(membership), class: 'btn btn-primary'
+            = link_to 'Destroy', [:admin, membership], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure?' }

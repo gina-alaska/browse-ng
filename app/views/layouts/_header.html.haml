@@ -17,6 +17,15 @@
         %li
           = link_to '/attribution' do
             Attributions
-        / %li
-        /   = link_to '/login' do
-        /     Login
+        - if signed_in?
+          - if current_user.member?
+            = render 'layouts/member_menu'
+          - else
+            %li
+              = link_to '/logout' do
+                %img{ src: current_user.avatar, style: 'width: 20px;' }
+                Logout
+        - else
+          %li
+            = link_to '/login' do
+              Login
