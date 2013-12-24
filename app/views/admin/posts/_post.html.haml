@@ -1,0 +1,13 @@
+.panel.panel-info
+  .panel-heading
+    %h1.panel-title
+      = post.title
+      .text-muted.pull-right
+        = "Published #{time_ago_in_words(post.published_at)} ago" if post.published?
+      
+  .panel-body
+    :markdown
+      #{post.content}
+      
+    = link_to 'Edit', edit_admin_post_path(post), class: 'btn btn-primary'
+    = link_to 'Delete', admin_post_path(post), method: :delete, class: 'btn btn-danger', confirm: 'Are you sure?'

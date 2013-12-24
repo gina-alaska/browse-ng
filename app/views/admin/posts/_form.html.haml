@@ -1,0 +1,28 @@
+- if @post.errors.count > 0
+  .alert.alert-danger
+    %h4 Error(s) while trying to save post
+    %ul
+      - @post.errors.full_messages.each do |err|
+        %li= err
+  
+= form_for [:admin, @post], html: { role: 'form', class: 'form-horizontal' } do |f|
+  .form-group
+    = f.label :title, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_field :title, class: 'form-control'
+  
+  .form-group
+    = f.label :content, class: 'control-label col-lg-2'
+    .col-lg-10
+      = f.text_area :content, rows: 10, class: 'form-control'
+      
+  .form-group
+    .col-lg-offset-2.col-lg-10
+      .checkbox
+        %label
+          = f.check_box :published?
+          Publish?
+  
+  .pull-right
+    = link_to 'Cancel', admin_posts_path, class: 'btn btn-default'
+    = f.submit class: 'btn btn-primary'

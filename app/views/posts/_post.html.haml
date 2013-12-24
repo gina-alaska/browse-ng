@@ -1,0 +1,10 @@
+.panel.panel-info
+  .panel-heading
+    %h1.panel-title
+      = post.title
+      .text-muted.pull-right
+        = "Published #{time_ago_in_words(post.published_at)} ago" if post.published?
+      
+  .panel-body
+    :markdown
+      #{post.content}

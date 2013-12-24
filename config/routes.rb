@@ -1,13 +1,19 @@
 BrowseAlaskamappedOrg::Application.routes.draw do
+  resources :posts
+
   resources :footprints
 
   resources :scraps
+  
+  namespace :admin do
+    resources :posts
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  root 'posts#index'
 
   get 'attribution' => 'welcome#attribution'
   get 'questions' => 'welcome#questions'

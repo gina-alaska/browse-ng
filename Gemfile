@@ -9,6 +9,7 @@ gem 'haml'
 gem 'httparty'
 gem 'bower-tools', github: 'gina-alaska/bower-tools'
 gem 'will_paginate', '~> 3.0'
+gem 'redcarpet'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
