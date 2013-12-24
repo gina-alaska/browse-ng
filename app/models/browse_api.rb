@@ -35,7 +35,6 @@ class BrowseApi
   end
   
   def updated_at
-    Rails.logger.info 'test'
     DateTime.parse(@updated_at)
   end
   
