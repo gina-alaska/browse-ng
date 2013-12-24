@@ -1,12 +1,25 @@
-class Scrap < ActiveRecord::Base
-  has_one :footprint
-  belongs_to :license
+class Scrap < BrowseApi  
+  attr_accessor :source_id, :agency_id, :project_id, :license_id, :downloadable, :scene_gid, :license
   
-  def scene_gid
-    if self.footprint.scene_gid.nil?
-      self.scene_gid
-    else
-      self.footprint.scene_gid
-    end
+  def self.search(opts = {})
+    collect(get("/scraps.json?#{opts.to_param}"))
+  end
+  
+  def self.find(id)
+    return nil if id.nil?
+    
+    Scrap.new(get("/scraps/#{id}.json"))
+  end
+  
+  def footprint
+    Footprint.find(self.id)
+  end
+  
+  def license=(attributes)
+    @license = License.new(attributes)
+  end
+  
+  def license
+    License.find(self.license_id)
   end
 end

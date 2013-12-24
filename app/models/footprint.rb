@@ -1,7 +1,9 @@
-class Footprint < ActiveRecord::Base
-  belongs_to :scrap
+class Footprint < BrowseApi
+  attr_accessor :id, :start_time, :end_time, :source_res, :created_at, :updated_at, :scene_gid, :wkt
   
-  def wkt
-    @wkt ||= ActiveRecord::Base.connection.execute("SELECT ST_AsText('#{self.llgeom}') as wkt").first['wkt']
+  def self.find(scrap_id)
+    return nil if scrap_id.nil?
+    
+    Footprint.new(get("/scraps/#{scrap_id}/footprint"))
   end
 end

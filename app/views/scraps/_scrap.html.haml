@@ -1,14 +1,15 @@
-%dl.dl-horizontal
-  .row
-    .col-lg-6.col-md-6
-      %dt Scene ID:
-      %dd= link_to_unless current_page?(scrap), scrap.scene_gid, scrap
-      %dt License:
-      %dd
-        %abbr{ title: scrap.license.try(:synonym_label).try(:humanize) }
-          = scrap.license.try(:label)
-    .col-lg-6.col-md-6  
-      %dt Public:
-      %dd= scrap.license.try(:downloadable) ? 'Yes' : 'No'    
-      %dt Last updated:
-      %dd= scrap.updated_at
+- cache scrap do
+  %dl.dl-horizontal
+    .row
+      .col-lg-6.col-md-6
+        %dt Scene ID:
+        %dd= link_to_unless current_page?(scrap), scrap.scene_gid, scrap
+        %dt License:
+        %dd
+          %abbr{ title: scrap.license.try(:synonym_label).try(:humanize) }
+            = scrap.license.try(:label)
+      .col-lg-6.col-md-6  
+        %dt Public:
+        %dd= scrap.license.try(:downloadable) ? 'Yes' : 'No'    
+        %dt Last updated:
+        %dd= scrap.updated_at
