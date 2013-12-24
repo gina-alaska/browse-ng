@@ -20,6 +20,6 @@ class Scrap < BrowseApi
   end
   
   def license
-    License.find(self.license_id)
+    @license ||= License.find(self.license_id)
   end
 end
