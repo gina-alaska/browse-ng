@@ -1,5 +1,5 @@
 class Admin::PostsController < ApplicationController
-  before_action :login_required!
+  before_action :membership_required!
   
   def index
     @posts = Post.order('published_at DESC')

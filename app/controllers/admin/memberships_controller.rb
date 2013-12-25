@@ -1,5 +1,5 @@
 class Admin::MembershipsController < ApplicationController
-  before_action :login_required!
+  before_action :membership_required!
   before_action :set_admin_membership, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/memberships

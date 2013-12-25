@@ -12,6 +12,13 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def membership_required!
+    unless signed_in? and current_user.member?
+      flash[:warning] = "You do not have permission to view this page"
+      redirect_to '/'
+    end
+  end
+  
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
     
