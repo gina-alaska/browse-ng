@@ -14,6 +14,8 @@ The following environment variables are needed enable Google OAuth2 access, thes
 * GOOGLE_KEY
 * GOOGLE_SECRET
 
+__NOTE:__ Google's OAuth2 access requires an valid public hostname to use so you will need to use some services for xip.io to login to the application.
+
 The following environment variables are needed to access the database, if not specified it will attempt to use a local database server
 
 * RAILS_DB_USER
