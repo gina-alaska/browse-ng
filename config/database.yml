@@ -6,6 +6,10 @@
 development:
   adapter: postgresql
   database: browse-web-dev
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PASSWD'] %>
+  host: <%= ENV['RAILS_DB_HOST'] %>
+  port: <%= ENV['RAILS_DB_PORT'] %>  
   pool: 5
   timeout: 5000
 
@@ -15,11 +19,19 @@ development:
 test:
   adapter: postgresql
   database: browse-web-test
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PASSWD'] %>
+  host: <%= ENV['RAILS_DB_HOST'] %>
+  port: <%= ENV['RAILS_DB_PORT'] %>  
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
   database: browse-web-prod
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PASSWD'] %>
+  host: <%= ENV['RAILS_DB_HOST'] %>
+  port: <%= ENV['RAILS_DB_PORT'] %>  
   pool: 5
   timeout: 5000
