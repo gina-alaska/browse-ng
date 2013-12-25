@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+post = JSON.parse(File.read('db/posts.json'))
+
+Post.create(post)
+
+Membership.create([{ email: 'will@gina.alaska.edu' }, { email: 'dayne@gina.alaska.edu' }])
