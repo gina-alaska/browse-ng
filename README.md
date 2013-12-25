@@ -21,6 +21,14 @@ The following environment variables are needed to access the database, if not sp
 * RAILS_DB_HOST
 * RAILS_DB_PORT
 
+Run the following command to load the database schema and seeds
+
+    rake db:setup
+
+In order to access the admin functionality of the application you will need to create a membership entry
+
+    rails runner "Membership.create({ email: 'your@google.email.address' })"
+  
 ## Contributing
 
 1. Fork it
