@@ -1,14 +1,21 @@
 %dl.dl-horizontal
   .row
-    .col-lg-6.col-md-6
+    .col-lg-5.col-md-5
       %dt Scene ID:
       %dd= link_to_unless current_page?(scrap), scrap.scene_gid, scrap
       %dt License:
       %dd
         %abbr{ title: scrap.license.try(:synonym_label).try(:humanize) }
           = scrap.license.try(:label)
-    .col-lg-6.col-md-6  
+    .col-lg-5.col-md-5
       %dt Public:
       %dd= scrap.license.try(:downloadable) ? 'Yes' : 'No'    
-      %dt Last updated:
-      %dd= scrap.updated_at
+      %dt Source:
+      %dd
+        %abbr{ title: scrap.source.try(:email) }
+          = scrap.source.try(:name)
+    - unless current_page?(scrap)
+      .col-lg-2.col-md-2
+        = link_to scrap, class: 'btn btn-default' do
+          %i.fa.fa-globe
+          Map

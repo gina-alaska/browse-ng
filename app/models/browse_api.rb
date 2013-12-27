@@ -4,7 +4,7 @@ class BrowseApi
   base_uri ENV['BROWSE_API_URL'] || 'http://browse-api.dev'
   format :json
   
-  attr_accessor :id, :created_at, :updated_at
+  attr_accessor :id, :url, :created_at, :updated_at
   
   def initialize(response = {})
     if BrowseApi.valid_response?(response)
