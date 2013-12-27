@@ -19,6 +19,7 @@
   "dependencies": {
     "bootstrap": "https://github.com/twbs/bootstrap.git",
     "leaflet": "http://leaflet-cdn.s3.amazonaws.com/build/leaflet-0.7.zip",
-    "wicket": "https://github.com/arthur-e/Wicket/archive/v1.0.zip"
+    "wicket": "https://github.com/arthur-e/Wicket/archive/v1.0.zip",
+    "font-awesome": "~4.0.3"
   }
 }
