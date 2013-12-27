@@ -5,7 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       name: "google",
       scope: "userinfo.email, userinfo.profile",
       image_aspect_ratio: "square",
-      image_size: 50 #,
-      # prompt: 'consent'
+      image_size: 50# ,
+#       prompt: 'consent'
     }
 end
