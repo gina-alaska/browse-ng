@@ -12,10 +12,16 @@
     #navbar-collapse-1.navbar-collapse.collapse
       %ul.nav.navbar-nav.pull-right
         %li
+          = link_to search_path do
+            %i.fa.fa-search
+            Search
+        %li
           = link_to 'https://uafgina.zendesk.com/anonymous_requests/new' do
+            %i.fa.fa-envelope
             Contact Support
         %li
           = link_to '/attribution' do
+            %i.fa.fa-info-circle
             Attributions
         - if signed_in?
           - if current_user.member?
@@ -28,4 +34,5 @@
         - else
           %li
             = link_to '/login' do
+              %i.fa.fa-lock
               Login
