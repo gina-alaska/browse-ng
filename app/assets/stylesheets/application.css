@@ -11,8 +11,8 @@
  *= require_self
  *= require bootstrap/dist/css/bootstrap
  *= require font-awesome/css/font-awesome
+ *= require site
  */
-
 
 section#header .title {
   background-color: #698239;

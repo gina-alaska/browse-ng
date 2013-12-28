@@ -1,5 +1,5 @@
 class Scrap < BrowseApi  
-  attr_accessor :source_id, :agency_id, :project_id, :license_id, :downloadable, :scene_gid, :license, :source
+  attr_accessor :source_id, :agency_id, :project_id, :license_id, :downloadable, :scene_gid, :license, :source, :footprint
   
   def self.search(opts = {})
     collect(get("/scraps.json?#{opts.to_param}"))
@@ -11,8 +11,12 @@ class Scrap < BrowseApi
     Scrap.new(get("/scraps/#{id}.json"))
   end
   
+  def footprint=(attributes)
+    @footprint = Footprint.new(attributes)
+  end
+  
   def footprint
-    Footprint.find(self.id)
+    @footprint ||= Footprint.find(self.id)
   end
   
   def license=(attributes)
@@ -31,7 +35,15 @@ class Scrap < BrowseApi
     @source ||= Source.find(self.source_id)
   end  
   
+  def related
+    self.class.related(self.id)
+  end
+  
+  def self.related(id)
+    collect(get("/scraps/#{id}/related"))
+  end
+  
   def to_param
-    "#{self.id}-#{self.scene_gid.gsub('.', '-')}"
+    "#{self.id}-#{self.scene_gid.try(:gsub, '.', '-')}"
   end
 end

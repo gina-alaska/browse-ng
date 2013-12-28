@@ -16,6 +16,10 @@ class BrowseApiResults
     @total_records = response.headers['X-Total-Records'].to_i
   end
   
+  def count
+    @collection.count
+  end
+  
   def each(&block)
     @collection.each do |record|
       yield record

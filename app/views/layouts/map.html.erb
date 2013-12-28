@@ -11,7 +11,10 @@
   <section id="header">
     <%= render 'layouts/header' %>
   </section>
-  <section id="content" class="container">
+  <section id="map-container">
+    <%= yield :map_container %>
+  </section>
+  <section id="content" class="">
     <%= yield %>
   </section>
 </body>

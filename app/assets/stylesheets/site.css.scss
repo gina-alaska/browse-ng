@@ -1,10 +1,47 @@
 section#header {
 //  margin-bottom: 20px;
-
+  backbround-color: #6A823D;
+  
   .title {
     color: white;
     font-size: 30px;
     font-weight: 400;
     background-color: #698339;
+    text-align: right;
   }
+  
+  .title img { 
+    max-width: 900px;
+  }
+}
+
+section#content {
+  margin: 20px;
+}
+
+#site-toolbar-container {
+  height: 50px;
+}
+
+#site-toolbar {
+  height: 50px;
+  margin-bottom: 0px;
+  width: 100%;
+  &.affix {
+    top: 0;
+  }
+}
+
+html,body {
+  padding:0;
+  margin: 0;
+}
+
+.highlight {
+  background-color: lighten(yellow, 20%);
+}
+
+.scrap {
+  padding-top: 20px;
+  border-bottom: 1px solid #efefef;
 }

@@ -6,7 +6,7 @@ class BrowseApi
   
   attr_accessor :id, :url, :created_at, :updated_at
   
-  def initialize(response = {})
+  def initialize(response)
     if BrowseApi.valid_response?(response)
       super
     else
@@ -51,7 +51,7 @@ class BrowseApi
   end
   
   def self.valid_response?(response)
-    return true unless response.is_a? HTTParty::Response
+    return true unless response.class == HTTParty::Response
     
     case response.code
     when 400...600

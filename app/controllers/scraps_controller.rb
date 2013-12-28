@@ -22,6 +22,9 @@ class ScrapsController < ApplicationController
   def show
     @scrap = Scrap.find(params[:id])
     
+    @related_scraps = @scrap.related
+    @related_scraps ||= []
+    
     render :layout => 'map'
   end
   

@@ -10,10 +10,23 @@
  *
  *= require_self
  *= require bootstrap/dist/css/bootstrap
+ *= require font-awesome/css/font-awesome
  *= require leaflet/leaflet
- *= require_tree .
+ *= require site
  */
 
-#map {
+#map-container {
   height: 400px;
+}
+
+#map {
+  position: relative;
+  width: 100%;
+  
+  height: 400px;
+  z-index: 50000;
+}
+#map.affix {
+  position: fixed;
+  top: 50px;
 }
