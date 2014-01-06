@@ -79,4 +79,3 @@ BrowseAlaskamappedOrg::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
     
 end
-HTTParty::HTTPCache.perform_caching = true

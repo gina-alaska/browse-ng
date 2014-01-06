@@ -17,16 +17,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle vendor
 set :keep_releases, 5
 
 namespace :deploy do
-  
-  desc 'Deploy bower components'
-  before :updated, :bower do
-    on roles(:web), in: :sequence, wait: 5 do
-      within release_path do
-        execute :rake, 'bower:install'
-      end
-    end
-  end
-
   desc 'Restart application'
   task :restart do
     puts "We currently don't have support for auto restarting, please login to browse-web0 and run 'sudo service unicorn_browser_ng restart'"
