@@ -1,0 +1,24 @@
+.row
+  .col-lg-9
+    %h4 You have access to the following datasets
+    .alert.alert-warning
+      We are sorry you do not access to any datasets
+      
+    %h4 Request access to the following datasets
+    .alert.alert-success
+      Congratulations! You have access to all of the avialable datasets
+  .col-lg-3
+    %h4 The following identify providers have been associated with your account
+    - %w{ google gina github }.each do |provider|
+      - if @user.authorizations.where(provider: provider).exists?
+        = render "/shared/#{provider}_button", disabled: true
+    
+    %h4 To add additonal identify providers to your account click the buttons below
+    - one_shown = false
+    - %w{ google gina github }.each do |provider|
+      - unless @user.authorizations.where(provider: provider).exists?
+        - one_shown = true
+        = render "/shared/#{provider}_button"
+
+    - unless one_shown
+      .alert.alert-success All identify providers have been added

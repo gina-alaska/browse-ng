@@ -11,7 +11,9 @@ gem 'bower-tools', github: 'gina-alaska/bower-tools'
 gem 'will_paginate', '~> 3.0'
 gem 'redcarpet'
 gem 'omniauth'
+gem 'omniauth-github'
 gem "omniauth-google-oauth2"
+gem "omniauth-openid"
 gem 'google-api-client'
 gem 'quiet_assets'
 

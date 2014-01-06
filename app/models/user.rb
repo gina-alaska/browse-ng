@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_one :membership
   
+  validates :email, presence: true, uniqueness: true
+  
   def self.create_from_hash!(hash)
     user = create(params_from_hash(hash))
 
@@ -44,10 +46,11 @@ class User < ActiveRecord::Base
   protected
   
   def self.params_from_hash(hash)
-    {
+    info = {
       name: hash['info']['name'], 
-      email: hash['info']['email'],
-      avatar: hash['info']['image']
+      email: hash['info']['email'] 
     }
+    info.merge!({ avatar: hash['info']['image'] }) unless hash['info']['image'].blank?
+    info
   end
 end

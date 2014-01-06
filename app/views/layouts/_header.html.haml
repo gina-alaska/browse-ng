@@ -1,3 +1,4 @@
+= render 'layouts/login'
 .title
   = image_tag "sdmi-banner.png", :title => "SDMI", style: "width: 100%;"
 #site-toolbar-container
@@ -13,10 +14,10 @@
         browse.alaskamapped.org
     #navbar-collapse-1.navbar-collapse.collapse
       %ul.nav.navbar-nav.pull-right
-        %li
-          = link_to search_path do
-            %i.fa.fa-search.fa-lg
-            Search
+        / %li
+        /   = link_to search_path do
+        /     %i.fa.fa-search.fa-lg
+        /     Search
         %li
           = link_to 'https://uafgina.zendesk.com/anonymous_requests/new' do
             %i.fa.fa-envelope.fa-lg
@@ -26,15 +27,9 @@
             %i.fa.fa-info-circle.fa-lg
             Attributions
         - if signed_in?
-          - if current_user.member?
-            = render 'layouts/member_menu'
-          - else
-            %li
-              = link_to '/logout' do
-                %img{ src: current_user.avatar, style: 'width: 20px;' }
-                Logout
+          = render 'layouts/member_menu'
         - else
           %li
-            = link_to '/login' do
+            = link_to '/login', data: { toggle: 'modal', target: '#login-modal' } do
               %i.fa.fa-lock.fa-lg
               Login

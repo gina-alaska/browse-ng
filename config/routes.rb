@@ -5,6 +5,8 @@ BrowseAlaskamappedOrg::Application.routes.draw do
 
   resources :scraps
   
+  resource :preferences, controller: 'users'
+  
   namespace :admin do
     resources :posts
     resources :memberships
@@ -26,6 +28,7 @@ BrowseAlaskamappedOrg::Application.routes.draw do
   get '/auth/failure', to: 'sessions#failure'
   get '/auth/:provider/callback', to: 'sessions#create'
   post '/auth/:provider/callback', to: 'sessions#create'  
+  get '/auth/:provider/disable', to: 'users#disable_provider'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
