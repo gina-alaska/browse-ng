@@ -1,11 +1,18 @@
 class @BasicMap
   constructor: (@selector, when_ready_func = null) ->
     @ready = false
-    @map = L.map(@selector).setView([64.8658580026598, -147.83855438232422], 3)
+    @map = L.map(@selector).setView([64.8658580026598, -147.83855438232422], 4)
     
-    L.tileLayer('http://tiles.gina.alaska.edu/tilesrv/bdl/tile/{x}/{y}/{z}', {
-      maxZoom: 18
-    }).addTo(@map);
+    baselayer = Gina.Layers.get('TILE.EPSG:3857.BDL')
+    baselayer.addTo(@map)
+    
+    overlays = {}
+    for name, slug of {'RGB': 'TILE.EPSG:3857.ORTHO_RGB', 'CIR': 'TILE.EPSG:3857.ORTHO_CIR', 'Grayscale': 'TILE.EPSG:3857.ORTHO_GS'}
+      overlays[name] = Gina.Layers.get(slug)
+    
+    overlays['RGB'].addTo(@map)
+    L.control.layers({'GINA Best Imagery Layer': baselayer}, overlays).addTo(@map)
+    
     @map.whenReady(when_ready_func, @) if when_ready_func? 
     
   fromWKT: (wkt, fit = true) =>

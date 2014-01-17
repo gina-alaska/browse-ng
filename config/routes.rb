@@ -5,6 +5,8 @@ BrowseAlaskamappedOrg::Application.routes.draw do
 
   resources :scraps
   
+  resources :orthos
+  
   resource :preferences, controller: 'users'
   
   namespace :admin do

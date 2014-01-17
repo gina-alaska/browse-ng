@@ -17,4 +17,5 @@
 //= require wicket/wicket
 //= require wicket/wicket-leaflet
 //= require bootstrap/dist/js/bootstrap
+//= require gina-map-layers/adapters/leaflet
 //= require_tree ./map

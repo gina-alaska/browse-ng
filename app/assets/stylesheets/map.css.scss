@@ -15,8 +15,31 @@
  *= require site
  */
 
+body,html {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+#header {
+  height: 162px;
+}
+
 #map-container {
-  height: 400px;
+  min-height: 400px;
+  
+  &.full-screen {
+    position: absolute;
+    top: 162px;
+    bottom: 0;
+    width: 100%;
+    
+    #map { 
+      position: absolute;
+      height: 100%;
+      width: 100%;
+    }
+  }
 }
 
 #map {

@@ -1,0 +1,8 @@
+- content_for(:map_container) do
+  #map
+  
+:javascript
+  var map;
+  $(document).ready(function() {
+    map = new BasicMap('map');
+  })
