@@ -6,6 +6,7 @@ BrowseAlaskamappedOrg::Application.routes.draw do
   resources :scraps
   
   resources :orthos
+  get '/ortho' => 'orthos#index'
   
   resource :preferences, controller: 'users'
   
