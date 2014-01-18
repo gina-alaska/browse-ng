@@ -3,18 +3,41 @@ class @BasicMap
     @ready = false
     @map = L.map(@selector).setView([64.8658580026598, -147.83855438232422], 4)
     
-    baselayer = Gina.Layers.get('TILE.EPSG:3857.BDL')
-    baselayer.addTo(@map)
+    bdl= Gina.Layers.get('TILE.EPSG:3857.BDL')
+    bdl.addTo(@map)
+    baselayers = {
+      'GINA Best Imagery Layer': bdl, 
+      'Shaded Relief': Gina.Layers.get('TILE.EPSG:3857.SHADED_RELIEF'),
+      'Landsat Pan': Gina.Layers.get('TILE.EPSG:3857.LANDSAT_PAN')
+    }
     
-    overlays = {}
-    for name, slug of {'RGB': 'TILE.EPSG:3857.ORTHO_RGB', 'CIR': 'TILE.EPSG:3857.ORTHO_CIR', 'Grayscale': 'TILE.EPSG:3857.ORTHO_GS'}
-      overlays[name] = Gina.Layers.get(slug)
-    
-    overlays['RGB'].addTo(@map)
-    L.control.layers({'GINA Best Imagery Layer': baselayer}, overlays).addTo(@map)
+    @overlays = {}
+    @toggleLayer('TILE.EPSG:3857.ORTHO_RGB')
     
     @map.whenReady(when_ready_func, @) if when_ready_func? 
+
+  setupMapEvents: =>
+    $(document).on 'click', '[data-toggle="overlay"]', @toggleLayerHandler
     
+  toggleLayerHandler: (e) =>
+    e.preventDefault()
+    @toggleLayer( $(e.currentTarget).attr('href') )
+  
+  toggleLayer: (slug) =>
+    target = $("[href='#{slug}']")
+    active = $("[data-toggle='overlay'].active")
+    
+    unless @overlays[slug]
+      @overlays[slug] = Gina.Layers.get(slug)
+      
+    @overlays[slug].addTo(@map)
+    target.addClass('active btn-success')
+
+    if active.length > 0
+      @map.removeLayer(@overlays[active.attr('href')])
+      active.removeClass('active btn-success')
+    
+  
   fromWKT: (wkt, fit = true) =>
     reader = new Wkt.Wkt();
     reader.read(wkt)

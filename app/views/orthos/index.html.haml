@@ -1,8 +1,14 @@
+- content_for(:header_message) do
+  Objectively generate team driven scenarios and distributed process improvements. Synergistically productize revolutionary strategic theme areas before adaptive infomediaries. Uniquely harness adaptive expertise vis-a-vis end-to-end best practices. 
 - content_for(:map_container) do
   #map
+  #layer-btns.btn-group
+    - { RGB: 'TILE.EPSG:3857.ORTHO_RGB', CIR: 'TILE.EPSG:3857.ORTHO_CIR', Grayscale: 'TILE.EPSG:3857.ORTHO_GS' }.each do |name,slug|
+      = link_to name, "#{slug}", data: { toggle: 'overlay' }, class: 'btn btn-default'
   
 :javascript
   var map;
   $(document).ready(function() {
     map = new BasicMap('map');
+    map.setupMapEvents();
   })

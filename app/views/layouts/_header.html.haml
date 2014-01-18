@@ -1,6 +1,8 @@
-= render 'layouts/login'
-.title
-  = image_tag "sdmi-banner.png", :title => "SDMI", style: "width: 100%;"
+.row.clearfix.title
+  .col-lg-7.col-md-6.col-sm-5.hidden-xs{ style: 'overflow: auto; text-align: left;' }
+    %p= yield :header_message
+  .col-lg-5.col-md-6.col-sm-7.col-xs-12
+    = image_tag "sdmi-banner.png", title: "SDMI"
 #site-toolbar-container
   #site-toolbar.navbar.navbar-default.navbar-static-top{ data: { spy: 'affix', offset_top: 112 }}
     .navbar-header
@@ -10,7 +12,6 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{ href:"/" } 
-        %i.fa.fa-globe.fa-lg
         browse.alaskamapped.org
     #navbar-collapse-1.navbar-collapse.collapse
       %ul.nav.navbar-nav.pull-right
