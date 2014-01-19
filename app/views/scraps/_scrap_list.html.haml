@@ -1,5 +1,3 @@
-- skip ||= false
-%ul.nav
+%table.table
   - scraps.each do |scrap|
-    - next if skip and skip.id == scrap.id
-    %li.scrap= render scrap
+    = render scrap

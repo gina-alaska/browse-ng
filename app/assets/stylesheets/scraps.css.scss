@@ -1,3 +1,16 @@
 // Place all the styles related to the Scraps controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 400px;
+  z-index: 501;
+  margin: 0;
+  
+  .panel, .panel-body { margin: 0; padding: 0; }
+  .results { max-height: 400px;  max-width: 400px; overflow: auto; }
+  .form { padding: 5px; }
+}

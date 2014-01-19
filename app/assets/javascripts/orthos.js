@@ -28,10 +28,3 @@ var initializeMaps = function() {
 }
 
 $(document).on('ready', initializeMaps);
-
-$(document).on('click', '[data-behavior="show-map"]', function(e) {
-  e.preventDefault();
-  map.fromWKT($(this).data('wkt'))
-  $('tr.highlight').removeClass('highlight')
-  $(this).parents('tr').addClass('highlight')
-})

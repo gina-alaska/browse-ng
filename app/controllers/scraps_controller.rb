@@ -11,8 +11,6 @@ class ScrapsController < ApplicationController
     # @scraps = @scraps.where('licenses.id = ?', params[:license_id]) if params[:license_id].present?
     # @scraps = @scraps.paginate(page: params[:page])
     
-    @licenses = License.search
-    
     @scraps = Scrap.search(api_params)
     # @scraps = @scraps.paginate(page: params[:page] || 1)
     
@@ -24,11 +22,15 @@ class ScrapsController < ApplicationController
     
     @related_scraps = @scrap.related
     @related_scraps ||= []
-    
-    render :layout => 'map'
   end
   
   protected
+  
+  def license_list
+    @licenses = License.search
+  end
+  
+  helper_method :license_list
   
   def api_params
     @api_params = params.permit(:q, :license_id, :page, :public)

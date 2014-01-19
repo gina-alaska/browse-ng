@@ -1,0 +1,5 @@
+- content_for(:map_container) do
+  #map
+  #layer-btns.btn-group
+    - { RGB: 'TILE.EPSG:3857.ORTHO_RGB', CIR: 'TILE.EPSG:3857.ORTHO_CIR', Grayscale: 'TILE.EPSG:3857.ORTHO_GS' }.each do |name,slug|
+      = link_to name, "#{slug}", data: { toggle: 'overlay' }, class: 'btn btn-default'

@@ -1,9 +1,11 @@
 class @BasicMap
   constructor: (@selector, when_ready_func = null) ->
     @ready = false
+
     @map = L.map(@selector).setView([64.8658580026598, -147.83855438232422], 4)
+    delete Gina.Layers.get('TILE.EPSG:3857.BDL')
+    bdl = Gina.Layers.get('TILE.EPSG:3857.BDL')
     
-    bdl= Gina.Layers.get('TILE.EPSG:3857.BDL')
     bdl.addTo(@map)
     baselayers = {
       'GINA Best Imagery Layer': bdl, 
@@ -13,8 +15,11 @@ class @BasicMap
     
     @overlays = {}
     @toggleLayer('TILE.EPSG:3857.ORTHO_RGB')
-    
     @map.whenReady(when_ready_func, @) if when_ready_func? 
+    
+  remove: =>
+    @map.remove()
+    $(document).off 'click', '[data-toggle="overlay"]', @toggleLayerHandler
 
   setupMapEvents: =>
     $(document).on 'click', '[data-toggle="overlay"]', @toggleLayerHandler

@@ -3,34 +3,5 @@
     %p= yield :header_message
   .col-lg-5.col-md-6.col-sm-7.col-xs-12
     = image_tag "sdmi-banner.png", title: "SDMI"
-#site-toolbar-container
-  #site-toolbar.navbar.navbar-default.navbar-static-top{ data: { spy: 'affix', offset_top: 112 }}
-    .navbar-header
-      %button.navbar-toggle{ type: "button", data: { toggle: "collapse", target:"#navbar-collapse-1" } }
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %a.navbar-brand{ href:"/" } 
-        browse.alaskamapped.org
-    #navbar-collapse-1.navbar-collapse.collapse
-      %ul.nav.navbar-nav.pull-right
-        / %li
-        /   = link_to search_path do
-        /     %i.fa.fa-search.fa-lg
-        /     Search
-        %li
-          = link_to 'https://uafgina.zendesk.com/anonymous_requests/new' do
-            %i.fa.fa-envelope.fa-lg
-            Contact Support
-        %li
-          = link_to '/attribution' do
-            %i.fa.fa-info-circle.fa-lg
-            Attributions
-        - if signed_in?
-          = render 'layouts/member_menu'
-        - else
-          %li
-            = link_to '/login', data: { toggle: 'modal', target: '#login-modal' } do
-              %i.fa.fa-lock.fa-lg
-              Login
+    
+= render 'layouts/site_toolbar'

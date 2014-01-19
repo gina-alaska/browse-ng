@@ -1,14 +1,8 @@
 - content_for(:header_message) do
-  The Alaska Statewide Digital Mapping Initiative is producing a new orthomosaic, which will provide complete multispectral coverage of the state at 2.5-meter spatial resolution. This satellite image mosaic will be the first consistent, high-resolution, high-accuracy, digital orthoimagery base layer ever produced across the entire state of Alaska.
-- content_for(:map_container) do
-  #map
-  #layer-btns.btn-group
-    - { RGB: 'TILE.EPSG:3857.ORTHO_RGB', CIR: 'TILE.EPSG:3857.ORTHO_CIR', Grayscale: 'TILE.EPSG:3857.ORTHO_GS' }.each do |name,slug|
-      = link_to name, "#{slug}", data: { toggle: 'overlay' }, class: 'btn btn-default'
+  %h3
+    Explore the Alaska Statewide Orthoimagery Mosaic
+  %h4 
+    For more details about the project see 
+    = link_to 'alaskamapped.org/ortho', 'http://alaskamapped.org/ortho'
   
-:javascript
-  var map;
-  $(document).ready(function() {
-    map = new BasicMap('map');
-    map.setupMapEvents();
-  })
+= render 'shared/map'
