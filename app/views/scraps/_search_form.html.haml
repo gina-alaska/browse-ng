@@ -1,11 +1,16 @@
-= form_tag '/search', method: 'GET', role: 'form', class: '' do
-  .form-group
-    = text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Scene id (ex: SPOT5.SDMI)'
-  .form-group
-    = select_tag :license_id, options_from_collection_for_select(license_list, :id, :label, params[:license_id]), class: 'form-control', prompt: 'Select a license'
-  .checkbox
-    %label
-      = check_box_tag :public, 'yes', params[:public]
-      Public downloads only
-  .form-group
-    = submit_tag 'Search', class: 'btn btn-primary'
+.search.panel.panel-default
+  .panel-body
+    = form_tag '/search', method: 'GET', role: 'form', class: 'form' do
+      .row
+        .col-lg-6
+          .form-group
+            = text_field_tag :q, params[:q], class: 'form-control', placeholder: 'Scene id (ex: SPOT5.SDMI)'
+          .checkbox
+            %label
+              = check_box_tag :public, 'yes', params[:public]
+              Public downloads only
+        .col-lg-6
+          .form-group
+            = select_tag :license_id, options_from_collection_for_select(license_list, :id, :label, params[:license_id]), class: 'form-control', prompt: 'Select a license'
+          .form-group
+            = submit_tag 'Search', class: 'btn btn-primary btn-block'

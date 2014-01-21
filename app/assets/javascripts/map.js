@@ -23,7 +23,12 @@
 var map;
 
 var initializeMaps = function() {
-  map = new BasicMap('map');
+  map = new BasicMap('map', function() {
+    var default_wkt = $('[data-default-wkt]').data('default-wkt');
+    if(default_wkt) {
+      this.fromWKT(default_wkt);
+    }
+  });
   map.setupMapEvents();  
 }
 

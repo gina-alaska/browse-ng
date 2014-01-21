@@ -1,23 +1,11 @@
 = render 'shared/map'
 
-.search.panel.panel-primary
+= render 'search_form'
+
+.results.panel.panel-primary
   .panel-body
-    .form
-      = render 'search_form'
-    
-    .results
-      %table.table
-        = render @scrap
+    = render @scrap
               
-      - if @related_scraps.count > 0
-        %h4 Related Scenes
-        = render 'scrap_list', scraps: @related_scraps, skip: @scrap
-      
-:javascript
-  var map;
-  $(document).ready(function() {
-    map = new BasicMap('map', function() {
-      this.fromWKT('#{@scrap.footprint.wkt}')
-    });
-  })
-  
+    - if @related_scraps.count > 0
+      %h4 Related Scenes
+      = render 'search_results_list', scraps: @related_scraps, skip: @scrap

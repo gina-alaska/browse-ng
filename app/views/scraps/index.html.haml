@@ -1,13 +1,5 @@
 = render 'shared/map'
 
-.search.panel.panel-primary
-  .panel-body
-    .form
-      = render 'search_form'
-    
-    - if @scraps.count > 0
-      .results
-        %h4 Results
-        = will_paginate @scraps
-        = render 'scrap_list', scraps: @scraps
-        = will_paginate @scraps
+= render 'search_form'
+        
+= render 'search_results', scraps: @scraps

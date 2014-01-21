@@ -1,0 +1,8 @@
+- if scraps.count > 0
+  .results.panel.panel-default    
+    .panel-heading
+      Search Results
+    .panel-body
+      = will_paginate scraps
+      = render 'search_results_list', scraps: scraps
+      = will_paginate scraps

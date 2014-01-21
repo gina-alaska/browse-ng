@@ -1,13 +1,14 @@
-%tr
-  %td
-    = scrap.scene_gid
-    %br/
-    %abbr{ title: scrap.source.try(:email) }
-      = scrap.source.try(:name)
-  %td
-    .btn-group
-      = link_to scrap, class: 'btn btn-default', data: { behavior: 'show-map', wkt: scrap.footprint.wkt } do
-        %i.fa.fa-eye
-      = link_to scrap, class: 'btn btn-default' do
-        %i.fa.fa-info
-    
+.scrap{ data: { default_wkt: scrap.footprint.wkt } }
+  .btn-group.pull-right
+    = link_to scrap, class: 'btn btn-default', data: { behavior: 'show-map', wkt: scrap.footprint.wkt } do
+      %i.fa.fa-eye
+  .info
+    .scene_gid= scrap.scene_gid
+    .source
+      %b Source: 
+      %abbr{ title: scrap.source.try(:email) }
+        = scrap.source.try(:name)
+    .license
+      %b License:
+      %abbr{ title: scrap.license.try(:web_info) }
+        = scrap.license.try(:label)
