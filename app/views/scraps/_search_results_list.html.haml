@@ -1,10 +1,11 @@
 - skip ||= nil
+- preview ||= false
 - scraps.each do |scrap|
   - next if skip and skip.id == scrap.id
   .scrap
     .action-btns.pull-right
       .btn-group
-        = link_to scrap, class: 'btn btn-default', data: { behavior: 'show-map', wkt: scrap.footprint.wkt } do
+        = link_to scrap, class: 'btn btn-default', data: { behavior: 'show-map', wkt: scrap.footprint.wkt, preview: preview } do
           %i.fa.fa-eye
         = link_to scrap_path(scrap) + "?#{params.to_param}", class: 'btn btn-default' do
           %i.fa.fa-info

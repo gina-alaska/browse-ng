@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require leaflet/leaflet
 //= require wicket/wicket
 //= require wicket/wicket-leaflet
@@ -24,19 +25,28 @@ var map;
 
 var initializeMaps = function() {
   map = new BasicMap('map', function() {
+    var m = this;
     var default_wkt = $('[data-default-wkt]').data('default-wkt');
     if(default_wkt) {
-      this.fromWKT(default_wkt);
+      m.fromWKT(default_wkt);
+    } else {
+      var preview_wkts = $('[data-preview="true"]')
+      preview_wkts.each(function(index, el) {
+        m.fromWKT($(el).data('wkt'), false, false)
+      })
+      m.fitWKTLayer()
     }
   });
+  
   map.setupMapEvents();  
 }
 
 $(document).on('ready', initializeMaps);
+$(document).on('page:load', initializeMaps)
 
 $(document).on('click', '[data-behavior="show-map"]', function(e) {
   e.preventDefault();
   map.fromWKT($(this).data('wkt'))
-  $('tr.highlight').removeClass('highlight')
-  $(this).parents('tr').addClass('highlight')
+  $('.highlight').removeClass('highlight')
+  $(this).parents('.scrap').addClass('highlight')
 })

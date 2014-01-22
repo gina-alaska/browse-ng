@@ -14,6 +14,21 @@ Supported Web Map APIs
 * ArcGIS JS API 2.6
 * Leaflet 0.6+
 
+Downloading the library
+-----------------------
+
+Using bower:
+
+    bower install https://github.com/gina-alaska/gina-map-layers.git
+    
+Download zip:
+
+    https://github.com/gina-alaska/gina-map-layers/releases/tag/1.0.2
+    
+Clone from github
+
+    git clone https://github.com/gina-alaska/gina-map-layers.git
+
 Include the adapter for your map library
 -------------------
 
@@ -59,6 +74,13 @@ You can also inject multiple layers by providing an array with each layer to add
 Limited wildcard support is also available, include all tiles for the spherical mercator projection
   
     Gina.Layers.inject(map, 'TILE.EPSG:3857.*');
+    
+Leaflet Example:
+  
+    <script type="text/javascript" charset="utf-8">
+        var map = L.map('map').setView([64.8595627003585, -147.84934364372472], 4)
+        map.addLayer(Gina.Layers.get('TILE.EPSG:3857.BDL'));
+    </script>
 
 OpenLayers Example:
 

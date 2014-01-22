@@ -1,6 +1,6 @@
 {
   "name": "gina-map-layers",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/gina-alaska/gina-map-layers",
   "authors": [
     "Will Fisher <will@gina.alaska.edu>"
@@ -21,14 +21,13 @@
     "test",
     "tests"
   ],
-  "_release": "1.0.2",
+  "_release": "1.0.3",
   "_resolution": {
     "type": "version",
-    "tag": "1.0.2",
-    "commit": "b65664034b1a1e4a1d0d2834309ad09a1549574d"
+    "tag": "1.0.3",
+    "commit": "678613acdea9f9c9e112d1ad9ad3e1a6e8c855c0"
   },
   "_source": "https://github.com/gina-alaska/gina-map-layers.git",
   "_target": "~1.0.2",
-  "_originalSource": "https://github.com/gina-alaska/gina-map-layers.git",
-  "_direct": true
+  "_originalSource": "https://github.com/gina-alaska/gina-map-layers.git"
 }

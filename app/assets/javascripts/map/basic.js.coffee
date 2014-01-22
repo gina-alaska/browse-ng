@@ -13,6 +13,9 @@ class @BasicMap
       'Landsat Pan': Gina.Layers.get('TILE.EPSG:3857.LANDSAT_PAN')
     }
     
+    @wktGroup = L.featureGroup()
+    @map.addLayer(@wktGroup)
+    
     @overlays = {}
     @toggleLayer('TILE.EPSG:3857.ORTHO_RGB')
     @map.whenReady(when_ready_func, @) if when_ready_func? 
@@ -41,21 +44,22 @@ class @BasicMap
     if active.length > 0
       @map.removeLayer(@overlays[active.attr('href')])
       active.removeClass('active btn-success')
-    
   
-  fromWKT: (wkt, fit = true) =>
+  fitWKTLayer: =>  
+    # this is needed to handle issue with zooming to soon after initialization
+    setTimeout =>
+      @map.fitBounds(@wktGroup.getBounds(), { animate: false })
+    , 100  
+    
+  fromWKT: (wkt, fit = true, single = true) =>
     reader = new Wkt.Wkt();
     reader.read(wkt)
-    if @wkt_layer
-      @map.removeLayer(@wkt_layer)
-      
-    @wkt_layer = reader.toObject()
-    @wkt_layer.addTo(@map)
     
-    if fit
-      # this is needed to handle issue with zooming to soon after initialization
-      setTimeout =>
-        @map.fitBounds(@wkt_layer.getBounds(), { animate: true })
-      , 100
+    if single
+      @wktGroup.clearLayers()
       
+    wkt_layer = reader.toObject()
+    @wktGroup.addLayer(wkt_layer);
+    
+    @fitWKTLayer() if fit
       

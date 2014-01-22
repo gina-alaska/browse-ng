@@ -35,9 +35,12 @@
   &.panel {
     background-color: #fff;
     background-color: rgba(255, 255, 255, 0.7);
-  }  
+  }
+  .panel-body {
+    padding: 10px 5px;
+  }
 }
 
 .results .info { margin-right: 80px; overflow: hidden; }
-.results .scrap { padding: 5px 0; }
+.results .scrap { padding: 5px 5px; }
 .results .pagination { margin: 5px 0; width: 100%; text-align: center; }
