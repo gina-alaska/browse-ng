@@ -41,8 +41,9 @@ var initializeMaps = function() {
   map.setupMapEvents();  
 }
 
-$(document).on('ready', initializeMaps);
-$(document).on('page:load', initializeMaps)
+// $(document).on('ready', initializeMaps);
+$(document).on('page:fetch', function() { map.remove(); });
+$(document).on('page:change', initializeMaps)
 
 $(document).on('click', '[data-behavior="show-map"]', function(e) {
   e.preventDefault();
